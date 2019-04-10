@@ -13,6 +13,12 @@
                 throw new ArgumentException("Text can not be empty or null.");
             }
 
+            if (text.Any(char.IsDigit))
+            {
+                throw new ArgumentException("Text can not contain numbers.");
+            }
+
+            // TODO: fix regex
             /*  Also we can group our string by chars with regex pattern:
                 
                 var regex = new Regex("(?<=(.))(?!\\1|$)");

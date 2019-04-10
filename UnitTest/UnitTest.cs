@@ -81,16 +81,24 @@
         [ExpectedException(typeof(ArgumentException), "Text can not be empty or null.")]
         public void Empty_String_Should_Return_Exception()
         {
-            var emptyString = "";
-            var result = StringHelper.SplitStringByChars(emptyString);
+            var text = "";
+            var result = StringHelper.SplitStringByChars(text);
         }
 
         [TestMethod]
         [ExpectedException(typeof(ArgumentException), "Text can not be empty or null.")]
         public void Whitespace_String_Should_Return_Exception()
         {
-            var whitespaceString = "   ";
-            var result = StringHelper.SplitStringByChars(whitespaceString);
+            var text = "   ";
+            var result = StringHelper.SplitStringByChars(text);
+        }
+
+        [TestMethod]
+        [ExpectedException(typeof(ArgumentException), "Text can not contain numbers.")]
+        public void String_With_Numbers_Should_Return_Exception()
+        {
+            var text = "x1yz2xx";
+            var result = StringHelper.SplitStringByChars(text);
         }
     }
 }
