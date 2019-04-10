@@ -10,7 +10,7 @@
     public class UnitTest
     {
         [TestMethod]
-        public void Test_Output_Should_Return_One_Element()
+        public void Test_Should_Return_One_Element()
         {
             // Arrange
             var text = "a";
@@ -19,15 +19,15 @@
             var expected = StringHelper.SplitStringByChars(text);
 
             // Asset
-            var countChars = 1;
+            var countSelectedCharsInString = 1;
             var actual = new List<char> { 'a' };
 
-            Assert.AreEqual(countChars, expected.Item1);
+            Assert.AreEqual(countSelectedCharsInString, expected.Item1);
             Assert.IsTrue(expected.Item2.SequenceEqual(actual));
         }
 
         [TestMethod]
-        public void Test_Output_Should_Return_One_Element1()
+        public void Test_Should_Return_One_Element1()
         {
             // Arrange
             var text = "ababcca";
@@ -36,15 +36,15 @@
             var expected = StringHelper.SplitStringByChars(text);
 
             // Asset
-            var countChars = 3;
+            var countSelectedCharsInString = 3;
             var actual = new List<char> { 'a' };
 
-            Assert.AreEqual(countChars, expected.Item1);
+            Assert.AreEqual(countSelectedCharsInString, expected.Item1);
             Assert.IsTrue(expected.Item2.SequenceEqual(actual));
         }
 
         [TestMethod]
-        public void Test_Output_Should_Return_Two_Elements()
+        public void Test_Should_Return_Two_Elements()
         {
             // Arrange
             var text = "aaabbbc";
@@ -53,15 +53,15 @@
             var expected = StringHelper.SplitStringByChars(text);
 
             // Asset
-            var countChars = 3;
+            var countSelectedCharsInString = 3;
             var actual = new List<char> { 'a', 'b' };
 
-            Assert.AreEqual(countChars, expected.Item1);
+            Assert.AreEqual(countSelectedCharsInString, expected.Item1);
             Assert.IsTrue(expected.Item2.SequenceEqual(actual));
         }
 
         [TestMethod]
-        public void Test_Output_Should_Return_Three_Elements()
+        public void Test_Should_Return_Three_Elements()
         {
             // Arrange
             var text = "abc";
@@ -70,10 +70,27 @@
             var expected = StringHelper.SplitStringByChars(text);
 
             // Asset
-            var countChars = 1;
+            var countSelectedCharsInString = 1;
             var actual = new List<char> { 'a', 'b', 'c' };
 
-            Assert.AreEqual(countChars, expected.Item1);
+            Assert.AreEqual(countSelectedCharsInString, expected.Item1);
+            Assert.IsTrue(expected.Item2.SequenceEqual(actual));
+        }
+
+        [TestMethod]
+        public void Test_With_Big_Letters_Should_Return_Three_Elements()
+        {
+            // Arrange
+            var text = "aAbBcC";
+
+            // Act
+            var expected = StringHelper.SplitStringByChars(text);
+
+            // Asset
+            var countSelectedCharsInString = 2;
+            var actual = new List<char> { 'a', 'b', 'c' };
+
+            Assert.AreEqual(countSelectedCharsInString, expected.Item1);
             Assert.IsTrue(expected.Item2.SequenceEqual(actual));
         }
 

@@ -6,8 +6,10 @@
 
     public static class StringHelper
     {
-        public static (int, IList<char>) SplitStringByChars(string text)
+        public static (int, IList<char>) SplitStringByChars(string input)
         {
+            var text = input.ToLower();
+
             if (string.IsNullOrWhiteSpace(text))
             {
                 throw new ArgumentException("Text can not be empty or null.");
@@ -17,13 +19,6 @@
             {
                 throw new ArgumentException("Text can not contain numbers.");
             }
-
-            // TODO: fix regex
-            /*  Also we can group our string by chars with regex pattern:
-                
-                var regex = new Regex("(?<=(.))(?!\\1|$)");
-                var groupedMembers = regex.Split(text);
-            */
 
             // group from smth like xyxzyz => xxyyzz
             var groupedMembers = text.GroupBy(x => x).Select(group => new {
